@@ -5,3 +5,39 @@ date: "2025-11-25"
 output: html_document
 ---
 
+```{r}
+#Upload packages
+library(tidyverse)
+library(renv)
+```
+
+
+
+```{r}
+#Upload data
+data(iris)
+iris
+```
+
+## Data manipulation
+
+```{r}
+iris<-iris%>%
+  arrange(Sepal.Length)
+
+```
+
+### Plotting data
+
+```{r}
+iris%>%
+  ggplot(aes(x=Sepal.Length,y=Petal.Length))+
+  geom_point(aes(fill = Species,shape=Species),size=2.5,color="black")+
+  geom_smooth(aes(group = Species,linetype=Species),method = "lm",se=FALSE)+
+  scale_shape_manual(values = 21:23)+
+  labs(title="Relationship between Sepal Length and Petal Length between Species",
+       y="Petal Length (mm)",x="Sepal Length (cm)")
+
+```
+
+
