@@ -7,6 +7,13 @@ output:
   html_document: default
 ---
 
+## Installing appropriate version of used packages
+
+```{r}
+renv::restore()
+
+```
+
 ```{r}
 #Loading packages
 library(tidyverse)
@@ -28,7 +35,7 @@ To update the lockfile we use `renv::snapshot`
 ## Update the lockfile
 
 ```{r}
-renv::snapshot()
+#renv::snapshot()
 
 ```
 
@@ -36,7 +43,7 @@ renv::snapshot()
 ```{r}
 #Uploading iris data
 data(iris)
-iris
+head(iris)
 ```
 
 
