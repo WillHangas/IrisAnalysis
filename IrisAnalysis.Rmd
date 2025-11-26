@@ -2,22 +2,45 @@
 title: "IrisAnalysis"
 author: "William Hangasjärvi"
 date: "2025-11-25"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r}
-#Upload packages
+#Loading packages
 library(tidyverse)
-library(renv)
+
+
 ```
 
+## Initialize renv
+
+Initializing renv creats a `renv` folder, a `renv.lock` and `.Rprofile`
+
+```{r}
+#Make it so project use renv
+#renv::init()
+
+```
+To update the lockfile we use `renv::snapshot` 
+
+## Update the lockfile
+
+```{r}
+renv::snapshot()
+
+```
 
 
 ```{r}
-#Upload data
+#Uploading iris data
 data(iris)
 iris
 ```
+
+
+
 
 ## Data manipulation
 
