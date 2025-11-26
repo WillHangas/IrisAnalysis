@@ -4,7 +4,10 @@ author: "William Hangasjärvi"
 date: "2025-11-25"
 output:
   pdf_document: default
-  html_document: default
+params:
+  data: "iris"
+  output_figures: "figures"
+  output_results: "results"
 ---
 
 ## Installing appropriate version of used packages
@@ -42,7 +45,7 @@ To update the lockfile we use `renv::snapshot`
 
 ```{r}
 #Uploading iris data
-data(iris)
+data(params$data)
 head(iris)
 ```
 
@@ -60,7 +63,7 @@ iris<-iris%>%
 ### Plotting data
 
 ```{r}
-iris%>%
+IrisPlot <- iris%>%
   ggplot(aes(x=Sepal.Length,y=Petal.Length))+
   geom_point(aes(fill = Species,shape=Species),size=2.5,color="black")+
   geom_smooth(aes(group = Species,linetype=Species),method = "lm",se=FALSE)+
@@ -68,6 +71,10 @@ iris%>%
   labs(title="Relationship between Sepal Length and Petal Length between Species",
        y="Petal Length (mm)",x="Sepal Length (cm)")
 
+ggsave("IrisCorrSepalLPetalL.png",plot=IrisPlot,path = params$output_figures)
+
+IrisPlot
 ```
+
 
 
